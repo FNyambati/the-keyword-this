@@ -2,17 +2,17 @@
   // 1) What is the purpose of the 'this keyword'?
 
       //Answer
-
-  // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
-
+//     "As a keyword for an object"
+//  // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
+        
       //Answer
-
+     
   // 3) What is the difference between call and apply?
-
+//      "apply lets you invoke a whole function, call requires to list parameters"
       //Answer
 
   // 4) What does .bind do?
-
+//       'bind a function using the this keyword'
       //Answer
 
 
@@ -24,7 +24,13 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
-
+var user = {
+    username: "Fnyambati",
+    email: "fmnyambati@gmail.com",
+    getUsername: function() {
+        return this.username;
+    }
+}
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
 
@@ -32,7 +38,14 @@
 
 
 // Write the function definitions which will make the following function invocations function properly.
-
+var Car = function(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.moveCar = function() {
+        return this.move + 10;
+    }
+}
   //Function Invocations Here
 
 var prius = new Car('Toyota', 'Prius', 2011);
@@ -55,7 +68,7 @@ var getYear = function(){
 
 //Note(no tests)
   //Code Here
-
+var findYear = getYear.bind(Car);
 
 //New Problem
 
@@ -76,9 +89,9 @@ setTimeout(getMyUsername, 5000);
 //Above you're given an object, a function, and a setTimeout invocation. After 5 seconds, what will the getUsername function return?
 //Note(no tests)
   //Answer Here
-
+//undefined
 //In the example above, what is the 'this keyword' bound to when getUsername runs?
-
+ setTimeout(getMyUsername.bind(myUser), 5000);
   //Answer Here
-
+//the global scope
 //Fix the setTimeout invocation so that the user object will be the focal object when getUsername is ran.
